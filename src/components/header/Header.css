@@ -1,0 +1,9 @@
+.header{
+    height: 10px;
+}
+.nav-item .nav-link{
+    color: white !important;
+}
+.navbar-expand .navbar-nav .nav-link{
+    color: white !important;
+}
