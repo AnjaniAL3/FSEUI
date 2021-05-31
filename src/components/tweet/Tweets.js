@@ -1,9 +1,6 @@
 import React from 'react';
 import '../../App.css';
-import TweetHeader from '../header/TweetsHeader';
 import SideNav from '../sidenavbar/SideNav';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { Redirect } from "react-router-dom";
 import Feed from "./Feed";
 
@@ -20,21 +17,17 @@ class Tweets extends React.Component {
         tweets1:[]
      }
 
-     
+    toggleHandler=(e)=>{
+        this.setState({tableView:!(this.state.tableView)});
+    }
 
-   
+    editHandler=(e)=>{
+        console.log("in edit handler");
+        this.setState({editId:e.target.id});
+        this.setState({editClicked:true})
+    }
 
-     toggleHandler=(e)=>{
-      this.setState({tableView:!(this.state.tableView)});
-     }
-
-     editHandler=(e)=>{
-       console.log("in edit handler");
-       this.setState({editId:e.target.id});
-      this.setState({editClicked:true})
-     }
-
-     search=(e)=>{
+    search=(e)=>{
         let value=e.target.value;
         if(value==''){
           this.fetchTweets();
@@ -45,14 +38,13 @@ class Tweets extends React.Component {
           return tweet.userId.toLowerCase().match(value.toLowerCase())||tweet.createdBy.toLowerCase().match(value.toLowerCase())||tweet.tweet.toLowerCase().match(value.toLowerCase());
         })
         this.setState({tweets:searchTweet});
-      }
-
-     }
+        }
+    }
 
     render() { 
       if(sessionStorage.getItem("loggedInUser")===''){
         return <Redirect to={{ pathname : "/" }} />
-    }
+      }
 
       if(this.state.editClicked){
         this.setState({editClicked:false});
@@ -61,27 +53,13 @@ class Tweets extends React.Component {
         }}}></Redirect>
       }
         return ( 
-            <div className="bgblack">
-
-            
-            <div className="d-flex">
-     
-      
-       
-            {/* Widgets */}
-
-            <SideNav></SideNav>
-            <Feed  />
-     
-
-
-            
-              
-        </div>
-       
-        </div>
-     
-         );
+              <div className="bgblack">
+                <div className="d-flex">
+                    <SideNav></SideNav>
+                    <Feed/>    
+                </div>
+              </div>
+        );
     }
 }
  

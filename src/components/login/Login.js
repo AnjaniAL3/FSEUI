@@ -60,8 +60,8 @@ class Login extends React.Component{
         }
         // this.setState({loginSuccess:true})
     }
-render()
-{
+    render()
+    {
     if (this.state.loginSuccess){
         this.setState({ loginSuccess: false });
         return <Redirect to={{ pathname : "/tweets" , state : {
@@ -71,42 +71,41 @@ render()
     }
   
     return (
-<div className="register">
-<div className="register__header">
-  <Header></Header>
-  </div >
-<div className="container" >
-<h2 className="register__heading">User Login</h2>
-<hr/>
-{this.state.error && (<h4 className="alert alert-danger">Please enter valid username and password</h4>)}
-<div className="register__form" >
-<form onSubmit={this.submit.bind(this)}>
-    <div>
-    <label htmlFor="uname"><b>Username</b></label><br/>
- <input type="text"  placeholder="Enter Username" name="uname" required onChange={this.handleUserNameChange.bind(this)}/><br/>
- </div>
- <div>
-<label htmlFor="password"><b>Password</b></label><br/>
- <input type="password"  placeholder="Enter Password" name="password" required onChange={this.handlePasswordChange.bind(this)}/><br/>
-</div>
-<div>
- <label>
+            <div className="register">
+                <div className="register__header">
+                    <Header></Header>
+                </div >
+                <div className="container" >
+                    <h2 className="register__heading">User Login</h2>
+                    <hr/>
+                    {this.state.error && (<h4 className="alert alert-danger">Please enter valid username and password</h4>)}
+                    <div className="register__form" >
+                        <form onSubmit={this.submit.bind(this)}>
+                        <div>
+                            <label htmlFor="uname"><b>Username</b></label><br/>
+                            <input type="text"  placeholder="Enter Username" name="uname" required onChange={this.handleUserNameChange.bind(this)}/><br/>
+                        </div>
+                        <div>
+                            <label htmlFor="password"><b>Password</b></label><br/>
+                            <input type="password"  placeholder="Enter Password" name="password" required onChange={this.handlePasswordChange.bind(this)}/><br/>
+                        </div>
+                        <div>
+                            <label>
+                            <input type="checkbox" checked="checked" name="remember"/> Remember me
+                            </label>
+                            <br />
+                        </div>
+                        <div>
+                            <button type="submit" className="register__submitButton">Login</button>
+                        </div>
 
-
- <input type="checkbox" checked="checked" name="remember"/> Remember me
- </label><br />
-</div>
-<div>
- <button type="submit" className="register__submitButton">Login</button>
- </div>
-
- <div className="f1" style={{backgroundcolor:"#f1f1f1"}}>
- <span className="fpwd">Forgot password?</span>
- </div>   
-  </form>
-</div>
-</div> 
-</div>     
+                        <div className="f1" style={{backgroundcolor:"#f1f1f1"}}>
+                            <span className="fpwd">Forgot password?</span>
+                        </div>   
+                    </form>
+                </div>
+            </div> 
+        </div>     
     )
 }
 

@@ -7,7 +7,6 @@ import AuthContext from './components/tweet/auth-context'
 function App() {
   const [tags,setTags]=useState([])
   useEffect(()=>{
-    
     sessionStorage.setItem("loggedInUser", "")
     sessionStorage.setItem("loggedInUserId", "")
     getTags()
@@ -21,7 +20,6 @@ function App() {
       response.data.map(p=>tagsarr.push(p.displayName))
       console.log(tags);
       setTags(tagsarr)
-
     },error=>{
         console.log(error);
     })
@@ -29,7 +27,7 @@ function App() {
   }
   
   return (
-    <AuthContext.Provider value={{  tags:tags}}>
+    <AuthContext.Provider value={{ tags:tags}}>
     <div className="app">
       
       <Content></Content>
